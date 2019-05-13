@@ -1,0 +1,49 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <label>Nome</label>
+  <input formControlName="nome" maxlength='100'> <br /><br />
+  <span style="color: red;" *ngIf="form.get('nome').value && form.get('nome').getError('mensagem')">
+    {{ form.get('nome').getError('mensagem') }}
+  </span>
+
+
+  <label>E-mail</label>
+  <input formControlName="email"> <br /><br />
+  <span style="color: red;" *ngIf="form.get('email').value && form.get('email').getError('mensagem')">
+    {{ form.get('email').getError('mensagem') }}
+  </span>
+
+
+  <label>CPF</label>
+  <input formControlName="cpf"> <br /><br />
+  <span style="color: red;" *ngIf="form.get('cpf').value && form.get('cpf').getError('mensagem')">
+    {{ form.get('cpf').getError('mensagem') }}
+  </span>
+
+  <label>CEP</label>
+  <input formControlName="cep"> <br /><br />
+  <span style="color: red;" *ngIf="form.get('cep').value && form.get('cep').getError('mensagem')">
+    {{ form.get('cep').getError('mensagem') }}
+  </span>
+  <div *ngIf="cep | async">
+    UF: {{(cep | async).uf}} <br />
+    Bairro: {{(cep | async).bairro}} <br />
+    Logradouro: {{(cep | async).logradouro}} <br />
+
+    <label>Complemento</label>
+    <input formControlName="complemento"> <br /><br />
+    <span style="color: red;" *ngIf="form.get('complemento').value && form.get('complemento').getError('mensagem')">
+      {{ form.get('complemento').getError('mensagem') }}
+    </span>
+  </div>
+  <br />
+  <button type="submit">Salvar</button>
+
+
+
+  <br /><br />
+  CLIENTES CADASTRADOS
+  <br /><br />
+  <span *ngFor="let cliente of (clientesCadastrados | async)">
+    - {{cliente.nome}}, {{cliente.cpf}} <br />
+  </span>
+</form>

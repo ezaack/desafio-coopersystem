@@ -1,0 +1,9 @@
+<form [formGroup]="form" (submit)="onSubmit()">
+  <label> Usuario
+    <input formControlName="usuario">
+  </label><br/>
+  <label> Senha
+    <input type="password" formControlName="senha">
+  </label><br/>
+  <button type="submit">Autenticar</button>
+</form>
