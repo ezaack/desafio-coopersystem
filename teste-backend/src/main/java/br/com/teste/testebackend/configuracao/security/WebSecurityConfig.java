@@ -31,6 +31,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         httpSecurity.csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.GET, "/").permitAll()
                 .antMatchers(HttpMethod.POST, "/").permitAll()
+                .antMatchers(HttpMethod.GET, "/cliente").hasRole("ADMIN")
+                .antMatchers(HttpMethod.POST, "/cliente").hasRole("ADMIN")
                 .antMatchers(HttpMethod.POST, "/login").permitAll()
                 .antMatchers(HttpMethod.GET, "/login").permitAll()
                 .antMatchers(HttpMethod.GET,"/rest/swagger-ui.html").permitAll()
