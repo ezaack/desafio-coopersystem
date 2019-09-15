@@ -13,8 +13,8 @@ public class Email implements Serializable {
     private String email;
 
     @ManyToOne
-    @JoinColumn(name="cliente_id")
-    private Cliente cliente;
+    @JoinColumn(name="pessoa_id")
+    private Pessoa pessoa;
 
     public Integer getId() {
         return id;
@@ -30,5 +30,13 @@ public class Email implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

@@ -21,8 +21,8 @@ public class Telefone implements Serializable {
 
 
     @ManyToOne
-    @JoinColumn(name="cliente_id")
-    private Cliente cliente;
+    @JoinColumn(name="pessoa_id")
+    private Pessoa pessoa;
 
     public Integer getId() {
         return id;
@@ -46,5 +46,13 @@ public class Telefone implements Serializable {
 
     public void setTipoTelefone(EnumTipoTelefone tipoTelefone) {
         this.tipoTelefone = tipoTelefone;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }

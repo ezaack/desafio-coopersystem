@@ -3,6 +3,7 @@ package br.com.teste.testebackend.negocio.entidade;
 import br.com.teste.testebackend.negocio.enumeracoes.EnumTipoPessoaJuridica;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @PrimaryKeyJoinColumn(name="id")
@@ -10,11 +11,14 @@ import javax.persistence.*;
 @DiscriminatorColumn(name = "tipo", length = 2, discriminatorType = DiscriminatorType.STRING)
 public abstract class PessoaJuridica extends Pessoa {
 
-    private String cnpj;
+    protected String cnpj;
 
-    private String rasaoSocial;
+    protected String rasaoSocial;
 
-    private EnumTipoPessoaJuridica tipo;
+    protected EnumTipoPessoaJuridica tipo;
+
+    @OneToMany(mappedBy = "pessoaJuridica")
+    protected List<Tributo> tributos;
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Integer getId(){
@@ -43,5 +47,13 @@ public abstract class PessoaJuridica extends Pessoa {
 
     public void setRasaoSocial(String rasaoSocial) {
         this.rasaoSocial = rasaoSocial;
+    }
+
+    public List<Tributo> getTributos() {
+        return tributos;
+    }
+
+    public void setTributos(List<Tributo> tributos) {
+        this.tributos = tributos;
     }
 }

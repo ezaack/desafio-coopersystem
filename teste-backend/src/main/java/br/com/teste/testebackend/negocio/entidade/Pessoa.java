@@ -16,10 +16,10 @@ public abstract class Pessoa implements Serializable {
     @Column(length = 100, nullable = false)
     protected String nome;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "pessoa")
     protected List<Telefone> telefones;
 
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany(mappedBy = "pessoa")
     protected List<Email> emails;
 
     protected String cep;
