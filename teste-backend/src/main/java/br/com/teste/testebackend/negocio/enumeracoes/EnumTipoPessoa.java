@@ -4,5 +4,7 @@ public enum EnumTipoPessoaJuridica {
 
     ME,
     PE,
-    GE;
+    GE,
+    CI,
+    FU;
 }
